@@ -11,8 +11,8 @@ def run(rank, world_size, matrix_size, topologia):
 
     dist.init_process_group("nccl", rank=rank, world_size=world_size)
 
-    device = torch.device(f"cuda:{rank}")
-    torch.cuda.set_device(device)
+    device = torch.device("cuda:0")
+    torch.cuda.set_device(0)
 
     # Simula carga de trabajo (matmul)
     A = torch.randn(matrix_size, matrix_size, device=device)
